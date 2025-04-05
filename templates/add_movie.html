@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Add Movie</title>
+</head>
+<body>
+    <h1>Add a New Movie</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}  <!-- This adds the CSRF token -->
+        
+        <label for="title">Title</label>
+        {{ form.title }}
+        
+        <label for="description">Description</label>
+        {{ form.description }}
+        
+        <label for="poster">Movie Poster</label>
+        {{ form.poster }}
+        
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
