@@ -44,7 +44,7 @@ const errorMessage = ref([]);
 const formData = ref({
   title: '',
   description: '',
-  poster: null  // Assuming you're handling file uploads
+  poster: null  
 });
 
 // Function to fetch CSRF token
@@ -157,8 +157,8 @@ function saveMovie()
   border-radius: 7px;
   color: white;
   font-size: 12px;
-  padding: 12px; /* Adjust padding as needed */
-  margin-bottom: 10px; /* Add margin for spacing */
+  padding: 12px; 
+  margin-bottom: 10px; 
 }
 
 /* CSS styles for error message */
@@ -167,8 +167,8 @@ function saveMovie()
   border-radius: 7px;
   color: white;
   font-size: 12px;
-  padding: 12px; /* Adjust padding as needed */
-  margin-bottom: 10px; /* Add margin for spacing */
+  padding: 12px;
+  margin-bottom: 10px; 
 }
 
 </style>

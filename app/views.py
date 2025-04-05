@@ -6,7 +6,7 @@ This file creates your application.
 """
 
 from app import app
-from flask import render_template, request, jsonify, send_file, send_from_directory
+from flask import render_template, request, jsonify, send_file, send_from_directory, url_for
 from werkzeug.utils import secure_filename
 from flask_wtf.csrf import generate_csrf
 from . import app, db, csrf
@@ -70,21 +70,20 @@ if not os.path.exists(UPLOAD_FOLDER):
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-# Route to fetch all movies
-@app.route('/api/v1/movies', methods=['GET'])
+@app.route("/api/v1/movies", methods=["GET"])
 def get_movies():
     movies = Movie.query.all()
     movie_list = []
+
     for movie in movies:
-        movie_data = {
-            'id': movie.id,
-            'title': movie.title,
-            'description': movie.description,
-            'poster': movie.poster
-        }
-        movie_list.append(movie_data)
-        
-    return jsonify({'movies': movie_list})
+        movie_list.append({
+            "id": movie.id,
+            "title": movie.title,
+            "description": movie.description,
+            "poster": url_for('get_poster', filename=movie.poster, _external=True)  # 👈 Absolute URL
+        })
+
+    return jsonify({"movies": movie_list})
 
     # Route for serving uploaded poster images.
 @app.route('/api/v1/posters/<filename>')

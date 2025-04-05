@@ -1,7 +1,6 @@
 <template>
     <div class="add-movie-form-view">
       <h1>Create New Movie</h1>
-      <!-- Use the MovieForm component here -->
       <MovieForm />
     </div>
   </template>
