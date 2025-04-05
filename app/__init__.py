@@ -3,11 +3,15 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect 
 from flask_wtf.csrf import generate_csrf
+from flask_cors import CORS
 from app.config import Config
 from app.logger import logger  # Import the logger
 
 # Initialize Flask application
 app = Flask(__name__)
+
+CORS(app)
+
 app.config.from_object(Config)
 
 @app.after_request
